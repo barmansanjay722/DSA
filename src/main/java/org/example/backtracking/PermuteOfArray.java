@@ -3,7 +3,7 @@ package org.example.backtracking;
 import java.util.ArrayList;
 
 public class PermuteOfArray {
-    public static void main(String[] args) {
+    public static void main(String[] args) {                        //O(n! * n)
         ArrayList<int[]> ans = new ArrayList<>();
 
         int a[] = {1,2,3};

@@ -1,7 +1,7 @@
 package org.example.backtracking;
 
 public class GenerateParenthesis {
-    public static void main(String[] args) {
+    public static void main(String[] args) {     // O(2^n)     sc -> O(n)
         int n = 3;
         generateParenteses(n,"",0,0,0);
     }

@@ -3,8 +3,8 @@ package org.example.recursion.live;
 public class RecursionLiveProblem_1 {
     public static void main(String[] args) {
 //        System.out.println(power(2,16));
-//        System.out.println(fastPower(2, 16));
-        System.out.println(matrixPath(3,3));
+        System.out.println(fastPower(2, 16));
+//        System.out.println(matrixPath(3,3));
     }
 
 
