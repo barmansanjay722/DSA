@@ -27,7 +27,7 @@ public class RecursionLiveProblem_1 {
     }
 
 
-    // Matrix Path problem    // O(2n)
+    // Matrix Path problem    // O(2^n)
     static int matrixPath(int n, int m) {
         if(n == 1 || m == 1) return 1;
         return matrixPath(n-1, m) + matrixPath(n, m-1);

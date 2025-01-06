@@ -16,9 +16,6 @@ public class LearnRecurstionBasics {
     }
 
 
-
-
-
     // example learing of recursion
     static void fun(int n ) {
         if(n > 0) {
