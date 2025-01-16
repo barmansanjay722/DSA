@@ -41,7 +41,7 @@ public class KinghtTour {            // O(k^2^n)
                 if(isTourStepCompltedbyGoingThere) {
                     return true;
                 }else {
-                    a[nextX][nextY] = -1;
+                    a[nextX][nextY] = -1;     // backtracking
                 }
             }
         }

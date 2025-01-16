@@ -26,9 +26,7 @@ public class SubscequnceArray {
         ans.add(curCopy);
 
         for (int i = index; i < a.length; i++) {
-
             if(i > index && a[i] == a[i-1]) continue;
-
             cur.add(a[i]);
             subsequesceHelper(a, ans, i + 1, cur);
             cur.remove(cur.size() - 1);    // backtrack

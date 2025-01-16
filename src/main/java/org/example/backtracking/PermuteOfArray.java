@@ -1,7 +1,5 @@
 package org.example.backtracking;
 
-import java.util.ArrayList;
-
 public class PermuteOfArray {
     public static void main(String[] args) {                        //O(n! * n)
 

@@ -29,6 +29,10 @@ public class SmartKeyped {
             cur = cur + keypadString.charAt(i);
             smartKeypadHelper(input, map, index + 1, ans, cur);
             cur = cur.substring(0, cur.length() - 1);    // backtracking
+
+
+            // this can be done without backtracking also here is how
+//            smartKeypadHelper(input, map, index + 1, ans, cur + keypadString.charAt(i));
         }
     }
 }
