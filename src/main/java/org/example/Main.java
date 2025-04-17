@@ -1,46 +1,60 @@
 package org.example;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
+        // Input: Define the range-based data
+        int yearsToVest = 3; // Example: Vest over 4 years
+        int monthsToVest = 1; // Example: Starts in January
+        double percentagePerYear = 25.0; // Example: 25% per year
+        int option = 50; // Total option value to distribute
 
-    }
+        // Expand vesting data based on the range inputs
+        List<Integer> vestYear = new ArrayList<>();
+        List<Integer> vestMonth = new ArrayList<>();
+        List<Double> percentage = new ArrayList<>();
 
-    static boolean sodokuSolver(int a[][], int row, int col) {
-        if(row == 9) return true;
-        if(col == 9) {
-            return sodokuSolver(a,row+1,0);
+        // Populate vestYear, vestMonth, and percentage
+        for (int year = 0; year < yearsToVest; year++) {
+            vestYear.add(2025 + year); // Assuming vesting starts in 2025
+            vestMonth.add(monthsToVest); // Keep the same month
+            percentage.add(percentagePerYear); // Keep the same percentage
         }
-        if(a[row][col] !=0) {
-            return sodokuSolver(a,row,col+1);
-        }
-        for(int i=1;i<=9;i++) {
-            if(isSafeThere(a,row,col,i)) {
-                a[row][col] = i;
-                if(sodokuSolver(a,row,col+1)) return true;
-                a[row][col] = 0;
+
+        // Calculate unvested values ensuring total matches option
+        List<Integer> unvested = new ArrayList<>();
+        int remainingOption = option;
+
+        for (int i = 0; i < vestYear.size(); i++) {
+            double vestingPercentage = percentage.get(i);
+            int unvestedValue;
+
+            // For the last year, ensure remaining options are assigned
+            if (i == vestYear.size() - 1) {
+                // The last year gets the remaining options
+                unvestedValue = remainingOption;
+            } else {
+                // Calculate vesting value based on percentage
+                unvestedValue = (int) Math.floor((vestingPercentage / 100) * option);
+                remainingOption -= unvestedValue;
             }
-        }
-        return false;
-    }
 
-    private static boolean isSafeThere(int[][] a, int row, int col, int num) {
-
-        for(int i=1;i<=9;i++) {
-            if(a[row][i] == num) return false;
-            if(a[i][col] == num) return false;
-        }
-
-        int quatrow = row / 3;
-        int quatcol = col / 3;
-
-        for(int i=0;i<3;i++) {
-            for(int j=0;j<3;j++) {
-                int cellRow = 3*quatrow+i;
-                int cellCol = 3*quatcol+j;
-                if(a[cellRow][cellCol] == num) return false;
+            // If we have a fractional value due to monthsToVest, adjust for the final year
+            if (i == vestYear.size() - 1 && remainingOption > 0) {
+                unvestedValue += remainingOption;
             }
+
+            unvested.add(unvestedValue);
         }
 
-        return false;
+        // Output results
+        for (int i = 0; i < vestYear.size(); i++) {
+            System.out.println("Year: " + vestYear.get(i) +
+                    ", Month: " + vestMonth.get(i) +
+                    ", Percentage: " + percentage.get(i) +
+                    ", Unvested: " + unvested.get(i));
+        }
     }
 }

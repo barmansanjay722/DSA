@@ -26,7 +26,7 @@ public class SubscequnceArray {
         ans.add(curCopy);
 
         for (int i = index; i < a.length; i++) {
-            if(i > index && a[i] == a[i-1]) continue;
+//            if(i > index && a[i] == a[i-1]) continue;             // handle duplicate values
             cur.add(a[i]);
             subsequesceHelper(a, ans, i + 1, cur);
             cur.remove(cur.size() - 1);    // backtrack
@@ -51,8 +51,8 @@ public class SubscequnceArray {
         }
 
         for(int i=index; i<a.length;i++) {
-            if(a[i] > sum) return;
-            if(i > index && a[i] == a[i-1]) continue;
+            if(a[i] > sum) return;                              // check negetive value
+            if(i > index && a[i] == a[i-1]) continue;           // check duplicate values
 
             cur.add(a[i]);
             combinationSumHelper(a,ans,i+1,sum-a[i], cur);
